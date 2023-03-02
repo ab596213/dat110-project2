@@ -63,6 +63,8 @@ public class Storage {
 
 		// TODO: disconnet the client (user) 
 		// and remove client session for user from the storage
+		ClientSession toRemove = clients.get(user);
+		toRemove.disconnect();
 		clients.remove(user);
 		
 	}
@@ -70,8 +72,7 @@ public class Storage {
 	public void createTopic(String topic) {
 
 		// TODO: create topic in the storage
-		Set <String> temp = new HashSet<String>();
-		subscriptions.put(topic, temp);
+		subscriptions.put(topic, ConcurrentHashMap.newKeySet());
 	
 	}
 

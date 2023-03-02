@@ -1,5 +1,7 @@
 package no.hvl.dat110.iotsystem;
 
+import java.util.concurrent.TimeUnit;
+
 import no.hvl.dat110.client.Client;
 import no.hvl.dat110.messages.Message;
 import no.hvl.dat110.messages.PublishMsg;
@@ -24,6 +26,7 @@ public class DisplayDevice {
 		client.subscribe(Common.TEMPTOPIC);
 		// - receive messages on the topic
 		for(int i = 0; i < COUNT; i++) {
+			try { TimeUnit.SECONDS.sleep(2); } catch (InterruptedException e) {}
 			client.receive();
 		}
 		
